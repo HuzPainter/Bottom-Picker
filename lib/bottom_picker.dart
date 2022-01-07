@@ -308,7 +308,7 @@ class _BottomPickerState extends State<BottomPicker> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: context.bottomPickerHeight,
+      height: 250,
       decoration: BoxDecoration(
         color: widget.backgroundColor,
         borderRadius: const BorderRadius.only(
@@ -321,11 +321,7 @@ class _BottomPickerState extends State<BottomPicker> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(
-                left: 20,
-                right: 20,
-                top: 20,
-              ),
+              padding: const EdgeInsets.all(20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -373,22 +369,25 @@ class _BottomPickerState extends State<BottomPicker> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                BottomPickerButton(
-                  onClick: () {
-                    widget.onSubmit?.call(
-                      widget.bottomPickerType == BOTTOM_PICKER_TYPE.simple
-                          ? selectedItemIndex
-                          : selectedDateTime,
-                    );
-                    Navigator.pop(context);
-                  },
-                  iconColor: widget.iconColor,
-                  gradientColors: widget.gradientColor,
-                  text: widget.buttonText,
-                  textStyle: widget.buttonTextStyle,
-                  displayIcon: widget.displayButtonIcon,
-                  solidColor: widget.buttonSingleColor,
-                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  child: BottomPickerButton(
+                    onClick: () {
+                      widget.onSubmit?.call(
+                        widget.bottomPickerType == BOTTOM_PICKER_TYPE.simple
+                            ? selectedItemIndex
+                            : selectedDateTime,
+                      );
+                      Navigator.pop(context);
+                    },
+                    iconColor: widget.iconColor,
+                    gradientColors: widget.gradientColor,
+                    text: widget.buttonText,
+                    textStyle: widget.buttonTextStyle,
+                    displayIcon: widget.displayButtonIcon,
+                    solidColor: widget.buttonSingleColor,
+                  ),
+                )
               ],
             ),
           ],
